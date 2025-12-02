@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEBVERSE - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .title-font { font-family: 'Orbitron', sans-serif; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; 
+  }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #8b5cf6, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .main-bg-dark { background: radial-gradient(ellipse at center, #0f0f1a 0%, #0a0a12 100%); color: white; }
+    .main-bg-light { background: radial-gradient(ellipse at center, #f1f5f9 0%, #e0e7ff 100%); color: #0a0a12; }
+    .hero-btn {
+      background: linear-gradient(to right, #6366f1, #3b82f6);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+    }
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .animate-fadeInZoom { animation: fadeInZoom 1.4s ease-out forwards; }
+    .image{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -10;
+       animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body class="main-bg-dark min-h-screen flex flex-col" id="body">
+
+  <!-- Navigation -->
+  <nav class="w-full px-6 py-4 flex justify-between items-center bg-black bg-opacity-50 backdrop-blur-md fixed top-0 z-50">
+    <h1 class="text-3xl font-bold gradient-text title-font">WEBVERSE</h1>   
+    <ul class="flex space-x-8 text-white font-medium text-lg">
+      <li><a href="#" data-section="home" class="nav-link hover:text-indigo-400 transition">Home</a></li>
+      <li><a href="#" data-section="about" class="nav-link hover:text-indigo-400 transition">About</a></li>
+      <li><a href="#" data-section="features" class="nav-link hover:text-indigo-400 transition">Features</a></li>
+      <li><a href="#" data-section="contact" class="nav-link hover:text-indigo-400 transition">Contact</a></li>
+    </ul>
+    <button onclick="toggleMode()" id="toggleBtn" class="ml-4 text-white border px-4 py-2 rounded-lg hover:bg-white hover:text-black transition text-xl">Dark Mode</button>
+  </nav>
+
+  <!-- HERO SECTION WITH WEBVERSE.PNG BACKGROUND -->
+  <header id="home" class="relative h-screen w-full overflow-hidden">
+    <!-- Fullscreen WEBVERSE.png Background -->
+    <img class="image"
+      src="./WEBVERSE.png" 
+      alt="WEBVERSE - Neon Universe" 
+      class="absolute inset-0 w-full h-full object-cover object-center -z-10 select-none pointer-events-none"
+      onerror="this.style.display='none'; document.body.style.background='radial-gradient(ellipse at center, #1a0033 0%, #000 100%)'"
+    >
+    <!-- Dark gradient overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-end h-full text-center px-6 pb-32 animate-fadeInZoom">
+     
+      <p class="text-xl md:text-3xl max-w-4xl mb-10 text-gray-100 font-light leading-relaxed">
+        A universe of powerful, interactive, and innovative digital tools for creators, students, and dreamers. 
+      </p>
+      <a href="#" data-section="features" class="hero-btn nav-link text-xl px-12 py-5 shadow-2xl">
+        Enter the WEBVERSE
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="absolute bottom-6 left-0 w-full text-center text-gray-400 text-sm z-10">
+      © 2025 WEBVERSE Projects • Built with passion and code
+    </footer>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="hidden max-w-5xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-5xl font-extrabold gradient-text mb-8">About WEBVERSE</h2>
+    <p class="text-lg leading-relaxed mb-6">
+      <span class="font-semibold text-indigo-300">WEBVERSE</span> is a unified digital ecosystem designed to 
+      <span class="font-semibold text-white">empower productivity, creativity, and collaboration</span>. 
+      Whether you’re a student, developer, or creator, WEBVERSE offers a seamless platform where 
+      <span class="font-semibold text-indigo-400">innovation meets intelligent design</span>.
+    </p>
+    <div class="grid md:grid-cols-2 gap-6 text-left max-w-4xl mx-auto mb-10">
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-indigo-500/50 transition">
+        Virtual Study Rooms — immersive spaces with timers and collaboration tools.
+      </div>
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-yellow-500/50 transition">
+        Finance Tracker — smart budgeting and expense insights.
+      </div>
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition">
+        Collaborative Idea Hubs — brainstorm and innovate together.
+      </div>
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-purple-500/50 transition">
+        Sales Analysis — interactive dashboards and performance insights.
+      </div>
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-red-500/50 transition">
+        Online Voting System — secure and transparent digital polls.
+      </div>
+      <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-pink-500/50 transition">
+        Online Book Store — discover and manage books effortlessly.
+      </div>
+    </div>
+    <p class="text-xl font-light">Simple. Intelligent. Future-ready. Welcome to the WEBVERSE.</p>
+  </section>
+
+  <!-- Features Section -->
+  <main id="features" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl w-full px-6 py-16 mx-auto">
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-green-400 mb-3">Virtual Study Room</h2>
+      <p class="mb-4 text-gray-300">Focused study sessions with timers and collaboration tools.</p>
+      <a href="./studyroom.html" class="text-green-300 font-semibold hover:underline">Explore →</a>
+    </div>
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-3">Finance Tracker</h2>
+      <p class="mb-4 text-gray-300">Smart budgeting, expense tracking, and financial insights.</p>
+      <a href="./Personal Finance Tracker - Dashboard.html" class="text-cyan-300 font-semibold hover:underline">Open Tracker →</a>
+    </div>
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-yellow-400 mb-3">Innovate Hub</h2>
+      <p class="mb-4 text-gray-300">Brainstorm, collaborate, and turn ideas into reality.</p>
+      <a href="./innovate.html" class="text-yellow-300 font-semibold hover:underline">Visit Hub →</a>
+    </div>
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-indigo-400 mb-3">Sales Analysis</h2>
+      <p class="mb-4 text-gray-300">Interactive dashboards for sales performance and insights.</p>
+      <a href="./Sales Analysis.html" class="text-indigo-300 font-semibold hover:underline">View Dashboard →</a>
+    </div>
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-red-400 mb-3">Online Voting</h2>
+      <p class="mb-4 text-gray-300">Secure, transparent, and real-time voting system.</p>
+      <a href="./voting.html" class="text-red-300 font-semibold hover:underline">Start Voting →</a>
+    </div>
+    <div class="glass text-center">
+      <h2 class="text-2xl font-semibold text-pink-400 mb-3">Online Book Store</h2>
+      <p class="mb-4 text-gray-300">Discover, browse, and buy books with ease.</p>
+      <a href="./Book store.html" class="text-pink-300 font-semibold hover:underline">Browse Books →</a>
+    </div>
+  </main>
+
+  <!-- Contact Section -->
+  <section id="contact" class="hidden max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-5xl font-extrabold gradient-text mb-6">Get in Touch</h2>
+    <p class="text-lg mb-10 text-gray-300">Have ideas? Questions? Let’s build the future together.</p>
+
+    <form action="https://formspree.io/f/xpwyovgq" method="POST" class="bg-white/5 backdrop-blur-lg rounded-3xl p-10 border border-white/10 max-w-xl mx-auto">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full mb-5 px-5 py-4 rounded-xl bg-white/10 border border-white/20 focus:border-indigo-500 focus:outline-none transition">
+      <input type="email" name="_replyto" placeholder="Your Email" required class="w-full mb-5 px-5 py-4 rounded-xl bg-white/10 border border-white/20 focus:border-indigo-500 focus:outline-none transition">
+      <textarea name="message" rows="6" placeholder="Your Message..." required class="w-full mb-6 px-5 py-4 rounded-xl bg-white/10 border border-white/20 focus:border-indigo-500 focus:outline-none transition resize-none"></textarea>
+      <button type="submit" class="hero-btn w-full text-xl py-4">Send Message</button>
+    </form>
+
+    <p class="text-sm text-gray-400 mt-8">
+      Or email directly: <a href="mailto:venkatshiva823@gmail.com" class="text-indigo-400 underline">venkatshiva823@gmail.com</a>
+    </p>
+  </section>
+
+  <script>
+    function toggleMode() {
+      const body = document.getElementById('body');
+      const toggleBtn = document.getElementById('toggleBtn');
+      body.classList.toggle('main-bg-dark');
+      body.classList.toggle('main-bg-light');
+      toggleBtn.innerHTML = body.classList.contains('main-bg-dark') ? 'Light Mode' : 'Dark Mode';
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const sectionId = this.getAttribute('data-section');
+        document.querySelectorAll('section, header').forEach(sec => sec.classList.add('hidden'));
+        document.getElementById(sectionId).classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
